@@ -151,10 +151,32 @@
     }
     .hero-inner{
       position:relative;
-      display:grid;
-      grid-template-columns: 1.3fr .7fr;
-      gap:20px;
-      align-items:start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap:24px;
+    }
+    .hero-logo{
+      width: 100%;
+      max-width: 400px;
+      border-radius: 18px;
+      box-shadow: 0 15px 40px rgba(0,0,0,.5);
+      border: 2px solid rgba(255,255,255,.15);
+    }
+    .hero-text{
+      max-width: 700px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-info-wrapper{
+      width: 100%;
+      max-width: 900px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
     }
     .hero h2{
       margin:0 0 10px;
@@ -168,6 +190,7 @@
       max-width: 60ch;
       line-height:1.5;
       font-size: 15px;
+      text-align: center;
     }
 
     /* Info card */
@@ -432,7 +455,6 @@
 
     /* Responsive */
     @media (max-width: 860px){
-      .hero-inner{grid-template-columns: 1fr;}
       .menu-buttons{grid-template-columns: 1fr;}
       .modal-content{
         width: 95%;
@@ -482,39 +504,42 @@
     <!-- Hero -->
     <section class="hero" id="top">
       <div class="hero-inner">
-        <div>
+        <img class="hero-logo" src="https://github.com/TitanBusinessPros/TTQ-Instructions/raw/main/SD-Logo.png" alt="Miss Ann & Pappy's Savage Diner" />
+        
+        <div class="hero-text">
           <h2>Welcome to Miss Ann &amp; Pappy's <span style="color:var(--accent)">Savage</span> Diner</h2>
           <p class="sub">
             Your hometown spot for delicious breakfast, lunch, and dinner in Wynnewood! Join us for great food and friendly service.
           </p>
-          <img src="https://github.com/TitanBusinessPros/TTQ-Instructions/raw/main/SD-Logo.png" alt="Miss Ann & Pappy's Savage Diner" style="width: 100%; max-width: 500px; margin-top: 20px; border-radius: 18px; box-shadow: 0 15px 40px rgba(0,0,0,.5); border: 2px solid rgba(255,255,255,.15);" />
         </div>
 
-        <aside class="card" aria-label="Restaurant information">
-          <h3>Information</h3>
-          <div class="info-list">
-            <div class="info-item">
-              <strong>📍 Location</strong>
-              <span>907 E Robert S Kerr<br>Wynnewood, OK</span>
+        <div class="hero-info-wrapper">
+          <aside class="card" aria-label="Restaurant information">
+            <h3>Information</h3>
+            <div class="info-list">
+              <div class="info-item">
+                <strong>📍 Location</strong>
+                <span>907 E Robert S Kerr<br>Wynnewood, OK</span>
+              </div>
+              <div class="info-item">
+                <strong>📞 Phone</strong>
+                <span><a href="tel:5808123055">(580) 812-3055</a></span>
+              </div>
+              <div class="info-item">
+                <strong>🕒 Hours</strong>
+                <span>
+                  Monday: 6:00 AM - 8:00 PM<br>
+                  Tuesday: 4:00 PM - 8:00 PM<br>
+                  Wednesday: 6:00 AM - 8:00 PM<br>
+                  Thursday: 6:00 AM - 8:00 PM<br>
+                  Friday: 6:00 AM - 8:00 PM<br>
+                  Saturday: 11:00 AM - 8:00 PM<br>
+                  Sunday: CLOSED
+                </span>
+              </div>
             </div>
-            <div class="info-item">
-              <strong>📞 Phone</strong>
-              <span><a href="tel:5808123055">(580) 812-3055</a></span>
-            </div>
-            <div class="info-item">
-              <strong>🕒 Hours</strong>
-              <span>
-                Monday: 6:00 AM - 8:00 PM<br>
-                Tuesday: 4:00 PM - 8:00 PM<br>
-                Wednesday: 6:00 AM - 8:00 PM<br>
-                Thursday: 6:00 AM - 8:00 PM<br>
-                Friday: 6:00 AM - 8:00 PM<br>
-                Saturday: 11:00 AM - 8:00 PM<br>
-                Sunday: CLOSED
-              </span>
-            </div>
-          </div>
-        </aside>
+          </aside>
+        </div>
       </div>
     </section>
 
@@ -549,6 +574,9 @@
     <footer>
       <div class="tagline">Have a Wonderful Day!</div>
       <div class="copyright">© <span id="year"></span> Miss Ann &amp; Pappy's Savage Diner</div>
+      <div style="margin-top: 12px; font-size: 13px; color: rgba(232,238,252,.65);">
+        Website Created By <a href="https://www.okiewebsiteguy.com" target="_blank" rel="noopener" style="color: var(--accent2); text-decoration: none;">The Okie Website Guy</a>
+      </div>
     </footer>
   </div>
 
