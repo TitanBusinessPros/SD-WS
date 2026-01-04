@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Miss Ann & Pappy's Savage Diner | Wynnewood, OK</title>
+  <meta name="description" content="Miss Ann & Pappy's Savage Diner in Wynnewood, OK — Breakfast, Lunch, and Dinner. Family Fun Night every Tuesday 6-9 PM!" />
+  <link rel="icon" type="image/png" href="https://github.com/TitanBusinessPros/TTQ-Instructions/raw/main/SD-Logo.png" />
+
+  <style>
+    :root{
+      --ink:#0f172a;
+      --muted:#475569;
+      --bg:#0b1220;
+      --card:#0f1b33;
+      --line:rgba(255,255,255,.12);
+      --accent:#1fb6c4;
+      --accent2:#7dd3fc;
+      --radius:18px;
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --max: 1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%; margin:0; padding:0;}
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:#e8eefc;
+      background: #0b1220;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    /* Background Image */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 100%;
+      background-image: url('https://github.com/TitanBusinessPros/SD-WS/raw/main/SD-BG-1.png');
+      background-size: contain;
+      background-position: top center;
+      background-repeat: repeat-y;
+      opacity: 0.35;
+      z-index: -1;
+    }
+
+    a{color:inherit; transition: all 0.2s ease;}
+    .wrap{
+      max-width:var(--max); 
+      margin:0 auto; 
+      padding:28px 18px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Top bar */
+    .topbar{
+      display:flex; 
+      align-items:center; 
+      justify-content:space-between;
+      gap:14px; 
+      margin-bottom:24px;
+      flex-wrap: wrap;
+    }
+    .brand{
+      display:flex; 
+      align-items:center; 
+      gap:12px;
+      text-decoration:none;
+    }
+    .logo-img{
+      width:56px; 
+      height:56px; 
+      border-radius:14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      border: 2px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.05);
+      padding: 4px;
+    }
+    .brand h1{
+      font-size:18px; 
+      margin:0; 
+      letter-spacing:.3px;
+      line-height: 1.2;
+    }
+    .brand p{
+      margin:2px 0 0; 
+      color:rgba(232,238,252,.75); 
+      font-size:13px;
+    }
+    .actions{
+      display:flex; 
+      align-items:center; 
+      gap:10px; 
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex; 
+      align-items:center; 
+      justify-content:center;
+      gap:8px;
+      padding:11px 16px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(12px);
+      color:#e8eefc;
+      text-decoration:none;
+      font-weight:650;
+      font-size:13px;
+      letter-spacing:.3px;
+    }
+    .btn.primary{
+      border-color: rgba(31,182,196,.50);
+      background: linear-gradient(135deg, rgba(31,182,196,.30), rgba(125,211,252,.15));
+    }
+    .btn.facebook{
+      background: linear-gradient(135deg, rgba(66,103,178,.40), rgba(59,89,152,.25));
+      border-color: rgba(66,103,178,.50);
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+    }
+    .btn:active{transform: translateY(0)}
+
+    /* Hero */
+    .hero{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.30));
+      backdrop-filter: blur(15px);
+      box-shadow: var(--shadow);
+      padding: 28px 22px;
+      overflow:hidden;
+      position:relative;
+      margin-bottom: 24px;
+    }
+    .hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(600px 300px at 20% 0%, rgba(31,182,196,.22), transparent 65%),
+        radial-gradient(600px 300px at 80% 0%, rgba(125,211,252,.15), transparent 70%);
+      pointer-events:none;
+    }
+    .hero-inner{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap:20px;
+      align-items:start;
+    }
+    .hero h2{
+      margin:0 0 10px;
+      font-size:32px;
+      line-height:1.15;
+      letter-spacing:.3px;
+    }
+    .hero .sub{
+      margin:0 0 16px;
+      color: rgba(232,238,252,.82);
+      max-width: 60ch;
+      line-height:1.5;
+      font-size: 15px;
+    }
+
+    /* Info card */
+    .card{
+      position:relative;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      padding:18px;
+    }
+    .card h3{
+      margin:0 0 12px;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color: rgba(232,238,252,.75);
+    }
+    .info-list{
+      display:grid; 
+      gap:10px;
+      font-size:14px;
+    }
+    .info-item{
+      display:flex; 
+      flex-direction: column;
+      gap:4px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .info-item strong{
+      color: rgba(232,238,252,.90);
+      font-size: 13px;
+      letter-spacing: .3px;
+    }
+    .info-item span{
+      color: rgba(232,238,252,.75);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .info-item a{
+      text-decoration: none;
+      color: var(--accent2);
+    }
+    .info-item a:hover{
+      text-decoration: underline;
+    }
+
+    /* Menu buttons section */
+    .menu-buttons{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .menu-btn{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 18px 20px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(31,182,196,.25), rgba(125,211,252,.15));
+      backdrop-filter: blur(12px);
+      color: #e8eefc;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: .3px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+    .menu-btn:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(0,0,0,.45);
+      border-color: rgba(31,182,196,.60);
+    }
+    .menu-btn:active{
+      transform: translateY(-1px);
+    }
+
+    /* Family Fun Night */
+    .fun-night{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.35));
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+    .fun-night-header{
+      padding: 20px 20px 16px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(31,182,196,.25), rgba(125,211,252,.15));
+      border-bottom: 1px solid var(--line);
+    }
+    .fun-night-header h3{
+      margin: 0 0 6px;
+      font-size: 26px;
+      letter-spacing: .4px;
+      color: #e8eefc;
+    }
+    .fun-night-header p{
+      margin: 0;
+      font-size: 15px;
+      color: rgba(232,238,252,.85);
+      font-weight: 600;
+    }
+    .fun-night-img{
+      width: 100%;
+      display: block;
+    }
+
+    /* Footer */
+    footer{
+      margin-top:24px;
+      text-align:center;
+      color: rgba(232,238,252,.75);
+      font-size:14px;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+      background: rgba(0,0,0,.25);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+    }
+    footer .tagline{
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: rgba(232,238,252,.90);
+    }
+    footer .copyright{
+      font-size: 12px;
+      color: rgba(232,238,252,.60);
+    }
+
+    /* Responsive */
+    @media (max-width: 860px){
+      .hero-inner{grid-template-columns: 1fr;}
+      .menu-buttons{grid-template-columns: 1fr;}
+    }
+    @media (max-width: 600px){
+      .topbar{justify-content: center;}
+      .brand h1{font-size: 16px;}
+      .hero h2{font-size: 26px;}
+      .menu-buttons{grid-template-columns: 1fr;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- Top bar -->
+    <div class="topbar">
+      <a class="brand" href="#top" aria-label="Miss Ann and Pappy's Savage Diner">
+        <img class="logo-img" src="https://github.com/TitanBusinessPros/TTQ-Instructions/raw/main/SD-Logo.png" alt="Miss Ann & Pappy's Savage Diner Logo" />
+        <div>
+          <h1>Miss Ann &amp; Pappy's Savage Diner</h1>
+          <p>Wynnewood, Oklahoma</p>
+        </div>
+      </a>
+
+      <div class="actions">
+        <a class="btn primary" href="tel:5808123055" aria-label="Call us">
+          📞 (580) 812-3055
+        </a>
+        <a class="btn facebook" href="https://www.facebook.com/profile.php?id=61582907345693" target="_blank" rel="noopener" aria-label="Visit our Facebook page">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          Facebook
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div>
+          <h2>Welcome to Miss Ann &amp; Pappy's <span style="color:var(--accent)">Savage</span> Diner</h2>
+          <p class="sub">
+            Your hometown spot for delicious breakfast, lunch, and dinner in Wynnewood! Join us for great food and friendly service.
+          </p>
+        </div>
+
+        <aside class="card" aria-label="Restaurant information">
+          <h3>Information</h3>
+          <div class="info-list">
+            <div class="info-item">
+              <strong>📍 Location</strong>
+              <span>907 E Robert S Kerr<br>Wynnewood, OK</span>
+            </div>
+            <div class="info-item">
+              <strong>📞 Phone</strong>
+              <span><a href="tel:5808123055">(580) 812-3055</a></span>
+            </div>
+            <div class="info-item">
+              <strong>🕒 Hours</strong>
+              <span>
+                Monday: 6:00 AM - 8:00 PM<br>
+                Tuesday: 4:00 PM - 8:00 PM<br>
+                Wednesday: 6:00 AM - 8:00 PM<br>
+                Thursday: 6:00 AM - 8:00 PM<br>
+                Friday: 6:00 AM - 8:00 PM<br>
+                Saturday: 11:00 AM - 8:00 PM<br>
+                Sunday: CLOSED
+              </span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Menu Buttons -->
+    <section class="menu-buttons" aria-label="Our menus">
+      <a class="menu-btn" href="savage-diner-breakfast.html" aria-label="View breakfast menu">
+        🍳 Breakfast Menu
+      </a>
+
+      <a class="menu-btn" href="https://github.com/TitanBusinessPros/SD-WS/raw/main/SD-Lunch.jpg" target="_blank" aria-label="View lunch menu">
+        🍔 Lunch Menu
+      </a>
+
+      <a class="menu-btn" href="https://github.com/TitanBusinessPros/SD-WS/raw/main/SD-Dinner.jpg" target="_blank" aria-label="View dinner menu">
+        🍽️ Dinner Menu
+      </a>
+
+      <a class="menu-btn" href="https://www.facebook.com/profile.php?id=61582907345693&sk=photos" target="_blank" rel="noopener" aria-label="View pictures of our food">
+        📸 Pictures of Our Food
+      </a>
+    </section>
+
+    <!-- Family Fun Night -->
+    <section class="fun-night" aria-label="Family Fun Night">
+      <div class="fun-night-header">
+        <h3>🎉 Family Fun Night 🎉</h3>
+        <p>Every Tuesday from 6-9 PM</p>
+      </div>
+      <img class="fun-night-img" src="https://github.com/TitanBusinessPros/SD-WS/raw/main/FF-night.jpg" alt="Family Fun Night" />
+    </section>
+
+    <footer>
+      <div class="tagline">Have a Wonderful Day!</div>
+      <div class="copyright">© <span id="year"></span> Miss Ann &amp; Pappy's Savage Diner</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
