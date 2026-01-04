@@ -37,13 +37,15 @@
       top: 0;
       left: 0;
       width: 100%;
+      height: auto;
       min-height: 100%;
       background-image: url('https://github.com/TitanBusinessPros/SD-WS/raw/main/SD-BG-1.png');
-      background-size: contain;
+      background-size: 100% auto;
       background-position: top center;
-      background-repeat: repeat-y;
+      background-repeat: no-repeat;
       opacity: 0.35;
       z-index: -1;
+      padding-bottom: 100%;
     }
 
     a{color:inherit; transition: all 0.2s ease;}
@@ -111,6 +113,7 @@
       font-weight:650;
       font-size:13px;
       letter-spacing:.3px;
+      cursor: pointer;
     }
     .btn.primary{
       border-color: rgba(31,182,196,.50);
@@ -239,6 +242,7 @@
       letter-spacing: .3px;
       transition: all 0.3s ease;
       box-shadow: var(--shadow);
+      cursor: pointer;
     }
     .menu-btn:hover{
       transform: translateY(-3px);
@@ -247,6 +251,128 @@
     }
     .menu-btn:active{
       transform: translateY(-1px);
+    }
+
+    /* Modal */
+    .modal{
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,.85);
+      backdrop-filter: blur(8px);
+    }
+    .modal.active{
+      display: block;
+    }
+    .modal-content{
+      position: relative;
+      background: linear-gradient(180deg, rgba(11,18,32,.95), rgba(15,27,51,.95));
+      margin: 5% auto;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      width: 90%;
+      max-width: 1000px;
+      box-shadow: 0 25px 80px rgba(0,0,0,.6);
+      backdrop-filter: blur(20px);
+    }
+    .modal-header{
+      padding: 24px 28px 20px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(31,182,196,.15), rgba(125,211,252,.08));
+    }
+    .modal-header h2{
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: .3px;
+    }
+    .close{
+      color: rgba(232,238,252,.75);
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .close:hover{
+      background: rgba(255,255,255,.1);
+      color: #e8eefc;
+    }
+    .modal-body{
+      padding: 20px 28px 28px;
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+    
+    /* Menu sections in modal */
+    .menu-section{
+      margin-bottom: 24px;
+    }
+    .menu-section:last-child{
+      margin-bottom: 0;
+    }
+    .menu-section h3{
+      font-size: 20px;
+      margin: 0 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+      color: var(--accent2);
+    }
+    .menu-section p{
+      margin: 0 0 12px;
+      color: rgba(232,238,252,.70);
+      font-size: 14px;
+    }
+    .menu-items{
+      display: grid;
+      gap: 12px;
+    }
+    .menu-item{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .menu-item-info{
+      flex: 1;
+    }
+    .menu-item-info strong{
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+      color: #e8eefc;
+    }
+    .menu-item-info em{
+      font-style: normal;
+      font-size: 13px;
+      color: rgba(232,238,252,.70);
+      line-height: 1.4;
+    }
+    .menu-item-price{
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--accent);
+      white-space: nowrap;
     }
 
     /* Family Fun Night */
@@ -308,12 +434,22 @@
     @media (max-width: 860px){
       .hero-inner{grid-template-columns: 1fr;}
       .menu-buttons{grid-template-columns: 1fr;}
+      .modal-content{
+        width: 95%;
+        margin: 2% auto;
+      }
     }
     @media (max-width: 600px){
       .topbar{justify-content: center;}
       .brand h1{font-size: 16px;}
       .hero h2{font-size: 26px;}
       .menu-buttons{grid-template-columns: 1fr;}
+      .modal-header{
+        padding: 20px 18px 16px;
+      }
+      .modal-body{
+        padding: 16px 18px 20px;
+      }
     }
   </style>
 </head>
@@ -351,6 +487,7 @@
           <p class="sub">
             Your hometown spot for delicious breakfast, lunch, and dinner in Wynnewood! Join us for great food and friendly service.
           </p>
+          <img src="https://github.com/TitanBusinessPros/TTQ-Instructions/raw/main/SD-Logo.png" alt="Miss Ann & Pappy's Savage Diner" style="width: 100%; max-width: 500px; margin-top: 20px; border-radius: 18px; box-shadow: 0 15px 40px rgba(0,0,0,.5); border: 2px solid rgba(255,255,255,.15);" />
         </div>
 
         <aside class="card" aria-label="Restaurant information">
@@ -383,9 +520,9 @@
 
     <!-- Menu Buttons -->
     <section class="menu-buttons" aria-label="Our menus">
-      <a class="menu-btn" href="savage-diner-breakfast.html" aria-label="View breakfast menu">
+      <button class="menu-btn" onclick="openModal()" aria-label="View breakfast menu">
         🍳 Breakfast Menu
-      </a>
+      </button>
 
       <a class="menu-btn" href="https://github.com/TitanBusinessPros/SD-WS/raw/main/SD-Lunch.jpg" target="_blank" aria-label="View lunch menu">
         🍔 Lunch Menu
@@ -415,8 +552,171 @@
     </footer>
   </div>
 
+  <!-- Breakfast Menu Modal -->
+  <div id="breakfastModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>🍳 Breakfast Menu</h2>
+        <button class="close" onclick="closeModal()" aria-label="Close menu">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Eggs -->
+        <div class="menu-section">
+          <h3>Eggs</h3>
+          <p>Classic breakfast plates</p>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <strong>2 eggs</strong>
+              </div>
+              <div class="menu-item-price">$8</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <strong>3 eggs</strong>
+                <em>Your choice: hashbrowns or sausage &amp; biscuit</em>
+              </div>
+              <div class="menu-item-price">$9</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <strong>Omelet</strong>
+                <em>Meat &amp; cheese omelet with ham, bacon, or sausage. Options: Western • Spanish • Vegetarian</em>
+              </div>
+              <div class="menu-item-price">$9</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <strong>Steak and eggs</strong>
+                <em>Steak, choice of eggs, hashbrowns, toast</em>
+              </div>
+              <div class="menu-item-price">$12</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <strong>Chop and eggs</strong>
+                <em>Tenderloin chop, choice of eggs, hashbrowns, toast</em>
+              </div>
+              <div class="menu-item-price">$12</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <strong>Breakfast burrito</strong>
+                <em>Scrambled egg, choice of meat, cheddar cheese</em>
+              </div>
+              <div class="menu-item-price">$9</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Biscuits & Gravy -->
+        <div class="menu-section">
+          <h3>Biscuits &amp; Gravy</h3>
+          <p>Comfort food classics</p>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <strong>1 biscuit and sausage gravy</strong>
+              </div>
+              <div class="menu-item-price">$4</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <strong>2 biscuits with sausage gravy</strong>
+              </div>
+              <div class="menu-item-price">$6</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <strong>2 eggs with hashbrowns and gravy</strong>
+              </div>
+              <div class="menu-item-price">$8</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <strong>Sausage with hashbrowns and gravy</strong>
+              </div>
+              <div class="menu-item-price">$9</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Breakfast Sammie's -->
+        <div class="menu-section">
+          <h3>Breakfast Sammie's</h3>
+          <p>On toast</p>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <strong>Bacon &amp; Egg</strong>
+                <em>Scrambled egg, bacon, and cheese on toast</em>
+              </div>
+              <div class="menu-item-price">$9</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <strong>Sausage &amp; Egg</strong>
+                <em>Scrambled egg, sausage, and cheese on toast</em>
+              </div>
+              <div class="menu-item-price">$9</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <strong>Steak &amp; Egg</strong>
+                <em>Scrambled egg, steak, cheese, and mayo on toast</em>
+              </div>
+              <div class="menu-item-price">$11.50</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pancakes -->
+        <div class="menu-section">
+          <h3>Pancakes</h3>
+          <p>Simple &amp; sweet</p>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <strong>Pancakes</strong>
+                <em>$2 each</em>
+              </div>
+              <div class="menu-item-price">$2</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    function openModal() {
+      document.getElementById("breakfastModal").classList.add("active");
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById("breakfastModal").classList.remove("active");
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      const modal = document.getElementById("breakfastModal");
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
   </script>
 </body>
 </html>
